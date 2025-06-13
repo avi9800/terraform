@@ -1,0 +1,2 @@
+name = "DevServer"
+environment = "Development"
