@@ -1,13 +1,12 @@
-provider "aws" {
-  region = var.server_config.region
-}
-
-resource "aws_instance" "ec2" {
-  ami = var.ami
-  instance_type = var.server_config.instance_type
-  key_name = var.server_config.key_name
-  tags = {
-        Name = var.name
-        Environment = var.environment
+module "ec2" {
+    source = "./modules/ec2"
+    ami = "ami-0f918f7e67a3323f0"
+    name = "Web_server"
+    environment = "Development"
+    server_config = {
+        key_name = "terraform",
+        instance_type = "t2.micro"
+        region = "ap-south-1"
     }
 }
+
